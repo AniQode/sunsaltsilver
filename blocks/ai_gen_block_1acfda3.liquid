@@ -1,0 +1,134 @@
+{% doc %}
+  @prompt
+    Add a custom CSS snippet to prevent horizontal overflow caused by the Etsy review carousel section. The carousel is making the page wider than the viewport, allowing users to scroll left. The fix should target the section containing the carousel and apply overflow-x: hidden to prevent any element from extending beyond the viewport width. Ideally scope it to the carousel section rather than applying it globally to the body, but if the section class is unknown, apply it to a wrapper that contains the carousel block.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-carousel-overflow-fix-{{ ai_gen_id }} {
+    overflow-x: hidden;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  {% if block.settings.target_selector != blank %}
+    {{ block.settings.target_selector }} {
+      overflow-x: hidden !important;
+      max-width: 100% !important;
+    }
+
+    {{ block.settings.target_selector }} * {
+      max-width: 100% !important;
+    }
+  {% endif %}
+
+  {% if block.settings.apply_to_etsy_reviews %}
+    [class*="etsy"],
+    [id*="etsy"],
+    [class*="review"],
+    [id*="review"],
+    .carousel,
+    [class*="carousel"] {
+      overflow-x: hidden !important;
+      max-width: 100% !important;
+    }
+  {% endif %}
+
+  {% if block.settings.apply_globally %}
+    body {
+      overflow-x: hidden !important;
+    }
+
+    .shopify-section {
+      overflow-x: hidden !important;
+      max-width: 100% !important;
+    }
+  {% endif %}
+{% endstyle %}
+
+<div class="ai-carousel-overflow-fix-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  {% if block.settings.show_message %}
+    <div style="
+      padding: 12px 16px;
+      background-color: {{ block.settings.message_bg_color }};
+      color: {{ block.settings.message_text_color }};
+      border-radius: 4px;
+      font-size: 14px;
+      text-align: center;
+      margin-bottom: 16px;
+    ">
+      {{ block.settings.message_text }}
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Carousel overflow fix",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Fix options"
+    },
+    {
+      "type": "paragraph",
+      "content": "This block prevents horizontal overflow from carousels and other wide elements. Choose your targeting method below."
+    },
+    {
+      "type": "checkbox",
+      "id": "apply_to_etsy_reviews",
+      "label": "Target Etsy review carousel",
+      "default": true,
+      "info": "Applies overflow fix to elements with 'etsy', 'review', or 'carousel' in their class or ID"
+    },
+    {
+      "type": "text",
+      "id": "target_selector",
+      "label": "Custom CSS selector",
+      "placeholder": ".my-carousel-section",
+      "info": "Optional: Enter a specific CSS selector to target (e.g., .carousel-wrapper, #reviews-section)"
+    },
+    {
+      "type": "checkbox",
+      "id": "apply_globally",
+      "label": "Apply to entire page",
+      "default": false,
+      "info": "Use as last resort - applies overflow-x: hidden to body and all sections"
+    },
+    {
+      "type": "header",
+      "content": "Status message"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_message",
+      "label": "Show status message",
+      "default": false,
+      "info": "Display a message indicating the fix is active"
+    },
+    {
+      "type": "text",
+      "id": "message_text",
+      "label": "Message text",
+      "default": "Overflow fix active"
+    },
+    {
+      "type": "color",
+      "id": "message_bg_color",
+      "label": "Message background",
+      "default": "#f0f0f0"
+    },
+    {
+      "type": "color",
+      "id": "message_text_color",
+      "label": "Message text color",
+      "default": "#333333"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Carousel overflow fix"
+    }
+  ]
+}
+{% endschema %}
