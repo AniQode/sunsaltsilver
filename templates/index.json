@@ -258,7 +258,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<p>Every piece starts as raw sterling silver sheet or wire, hand-forged, hammered, and set with stone in my small studio. Each piece is one of one, made to honor the beauty already present in the stone.</p><h3>Featured artisan jewelry</h3>",
+                "text": "<p>Every piece starts as raw sterling silver sheet or wire, hand-forged, hammered, and set with stone in my small studio. Each piece is one of one, made to honor the beauty already present in the stone.</p><h3>Bangle Collection</h3>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
