@@ -437,7 +437,7 @@
       },
       "name": "t:names.products_grid",
       "settings": {
-        "collection": "start-here",
+        "collection": "bangles",
         "layout_type": "grid",
         "carousel_on_mobile": true,
         "max_products": 8,
@@ -608,11 +608,12 @@
       "settings": {
         "media_type_1": "image",
         "media_type_2": "image",
+        "image_2": "shopify://shop_images/necklaces-1.png",
         "stack_media_on_mobile": false,
         "custom_mobile_media": false,
         "media_type_1_mobile": "image",
         "media_type_2_mobile": "image",
-        "link": "shopify://collections",
+        "link": "shopify://collections/neclaces",
         "open_in_new_tab": false,
         "content_direction": "column",
         "vertical_on_mobile": true,
@@ -704,6 +705,7 @@
           "type": "image",
           "name": "t:names.image",
           "settings": {
+            "image": "shopify://shop_images/image-5.jpg",
             "link": "",
             "image_ratio": "portrait",
             "width": "fill",
@@ -725,6 +727,7 @@
         "image_mKkxry": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/image-3.jpg",
             "link": "",
             "image_ratio": "portrait",
             "width": "fill",
