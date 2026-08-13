@@ -16,7 +16,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h4>Artful. Elevated. Unapologetically individual.</h4>",
+            "text": "<h4>Test message from the theme editor</h4>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
